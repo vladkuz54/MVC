@@ -42,19 +42,12 @@ The **IoT Device Management API** provides a comprehensive solution for monitori
    cd mvc
    ```
 
-2. **Create a Virtual Environment**:
+2. **Install and Sync Dependencies**:
+   This project uses [uv](https://github.com/astral-sh/uv) for fast, reliable dependency management.
    ```bash
-   python -m venv .venv
-   # On Windows:
-   .venv\Scripts\activate
-   # On macOS/Linux:
-   source .venv/bin/activate
+   uv sync
    ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install .
-   ```
+   *Note: This command will automatically create a virtual environment and install all required dependencies.*
 
 ---
 
@@ -63,14 +56,14 @@ The **IoT Device Management API** provides a comprehensive solution for monitori
 ### 1. Initialize the Database
 The project includes a utility script to set up the database schema and populate it with sample readings.
 ```bash
-python importer.py
+uv run importer.py
 ```
 *Note: This script will drop existing tables and create new ones with 100 sample reading records.*
 
 ### 2. Start the API Server
-Run the application using Uvicorn:
+Run the application using Uvicorn through the uv runner:
 ```bash
-uvicorn main:app --reload
+uv run uvicorn main:app --reload
 ```
 
 ---
