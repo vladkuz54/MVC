@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict
 from bll.services.alerts_service import AlertsService
 
 from ..dependencies import get_alerts_service
+from .auth import get_current_user
 
 router = APIRouter(prefix="/alerts", tags=["alerts"])
 

@@ -1,15 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import (
-    Boolean,
-    Column,
-    Date,
-    DateTime,
-    Float,
-    ForeignKey,
-    Integer,
-    String,
-)
+from sqlalchemy import (Boolean, Column, Date, DateTime, Enum, Float,
+                        ForeignKey, Integer, String)
 from sqlalchemy.orm import relationship
 
 from . import Base, engine
@@ -27,6 +19,22 @@ class Organizations(Base):
     devices = relationship(
         "Devices", back_populates="organization", cascade="all, delete-orphan"
     )
+
+    users = relationship(
+        "Users", back_populates="organization", cascade="all, delete-orphan"
+    )
+
+
+class Users(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, index=True)
+    hashed_password = Column(String, nullable=False)
+    role = Column(Enum("admin", "user", name="user_roles"), default="user")
+    organization_id = Column(Integer, ForeignKey("organizations.id"))
+
+    organization = relationship("Organizations", back_populates="users")
 
 
 class Devices(Base):
