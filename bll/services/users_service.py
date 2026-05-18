@@ -25,6 +25,12 @@ class UsersService(IUsersService):
         self.repository = repository
         self.organizations_repository = organizations_repository
 
+    async def get_by_id(self, id: int):
+        obj_to_get = await self.repository.get_by_id(id)
+        if not obj_to_get:
+            raise EntityNotFoundError(f"Alert with ID {id} not found")
+        return obj_to_get
+
     async def get_user_by_username(self, username: str):
         obj_to_get = await self.repository.get_user_by_username(username)
         if not obj_to_get:
