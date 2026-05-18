@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus IoT - Portal Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(192, 132, 252, 0.08) 0%, transparent 40%),
+                        #08090d;
+            padding: 20px;
+        }
+
+        .login-card {
+            width: 440px;
+            max-width: 100%;
+            background: rgba(18, 20, 28, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: cardSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cardSlideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .login-brand svg {
+            color: var(--accent-indigo);
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+        }
+
+        .login-brand h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #fff, var(--accent-indigo));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .tabs-toggle {
+            display: flex;
+            background-color: var(--bg-tertiary);
+            padding: 4px;
+            border-radius: var(--radius-md);
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .tab-btn.active {
+            background-color: var(--bg-secondary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-view {
+            display: none;
+        }
+
+        .form-view.active {
+            display: block;
+            animation: formFadeIn 0.3s ease-out;
+        }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            font-size: 0.95rem;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .form-footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <header class="login-header">
+            <div class="login-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <h1>NEXUS IoT</h1>
+            </div>
+            <p id="portal-sub">Access your localized IoT edge framework</p>
+        </header>
+
+        <div class="tabs-toggle">
+            <button class="tab-btn active" id="btn-login-tab" onclick="switchForm('login')">Sign In</button>
+            <button class="tab-btn" id="btn-register-tab" onclick="switchForm('register')">Register</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="form-login" class="form-view active" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" class="form-control" placeholder="admin" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">Sign In Portal</button>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="form-register" class="form-view" onsubmit="handleRegister(event)">
+            <div class="form-group">
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" class="form-control" placeholder="e.g. administrator" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" class="form-control" placeholder="Choose a secure password" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-role">Role</label>
+                <select id="reg-role" class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reg-org">Organization ID</label>
+                <input type="number" id="reg-org" class="form-control" value="1" placeholder="Enter target organization ID" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">Create Account</button>
+        </form>
+
+        <footer class="form-footer">
+            <span>Powered by Nexus Edge System v1.0.0</span>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications Grid -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // Simple View Form Switcher
+        function switchForm(mode) {
+            const loginTab = document.getElementById('btn-login-tab');
+            const regTab = document.getElementById('btn-register-tab');
+            const loginForm = document.getElementById('form-login');
+            const regForm = document.getElementById('form-register');
+            const sub = document.getElementById('portal-sub');
+
+            if (mode === 'login') {
+                loginTab.classList.add('active');
+                regTab.classList.remove('active');
+                loginForm.classList.add('active');
+                regForm.classList.remove('active');
+                sub.textContent = 'Access your localized IoT edge framework';
+            } else {
+                loginTab.classList.remove('active');
+                regTab.classList.add('active');
+                loginForm.classList.remove('active');
+                regForm.classList.add('active');
+                sub.textContent = 'Join enterprise boundaries network';
+            }
+        }
+
+        // Toast Helper in Login Page
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const icon = type === 'success' ? 
+                `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--state-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>` :
+                `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--state-error)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+                
+            toast.innerHTML = `
+                ${icon}
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.transition = '0.3s ease-out';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Handle OAuth2 Token Form Login
+        async function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // OAuth2 expects application/x-www-form-urlencoded
+            const formData = new URLSearchParams();
+            formData.append('username', username);
+            formData.append('password', password);
+
+            try {
+                const response = await fetch('/auth/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('nexus_token', data.access_token);
+                    
+                    // Fetch user info using token to complete profile
+                    const userResponse = await fetch('/users/', {
+                        headers: {
+                            'Authorization': `Bearer ${data.access_token}`
+                        }
+                    });
+
+                    if (userResponse.ok) {
+                        const userData = await userResponse.json();
+                        localStorage.setItem('nexus_user', JSON.stringify(userData));
+                        showToast('Access authorized. Connecting...');
+                        setTimeout(() => window.location.href = '/', 1000);
+                    } else {
+                        showToast('Error validating profile information', 'error');
+                    }
+                } else {
+                    const err = await response.json();
+                    showToast(err.detail || 'Authentication failed. Please verify credentials.', 'error');
+                }
+            } catch (err) {
+                console.error(err);
+                showToast('Unable to reach auth endpoints. Check connection.', 'error');
+            }
+        }
+
+        // Handle JSON User Registration
+        async function handleRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+            const role = document.getElementById('reg-role').value;
+            const organization_id = parseInt(document.getElementById('reg-org').value);
+
+            const payload = { username, password, role, organization_id };
+
+            try {
+                const response = await fetch('/auth/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    showToast('Account successfully created! Please sign in.');
+                    // Prefill login username
+                    document.getElementById('login-username').value = username;
+                    document.getElementById('login-password').value = '';
+                    switchForm('login');
+                } else {
+                    const err = await response.json();
+                    showToast(err.detail || 'Registration failed. Username may exist.', 'error');
+                }
+            } catch (err) {
+                console.error(err);
+                showToast('Unable to reach registration endpoint.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

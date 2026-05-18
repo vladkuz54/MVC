@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Device Management Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <h1>NEXUS IoT</h1>
+            </div>
+            <nav class="sidebar-menu">
+                <li class="menu-item active" data-tab="dashboard">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="menu-item" data-tab="organizations">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        Organizations
+                    </a>
+                </li>
+                <li class="menu-item" data-tab="devices">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        Devices
+                    </a>
+                </li>
+                <li class="menu-item" data-tab="sensors">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                        Sensors & Readings
+                    </a>
+                </li>
+                <li class="menu-item" data-tab="alerts">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Alerts
+                    </a>
+                </li>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar" id="nav-avatar">U</div>
+                    <div class="user-info">
+                        <h4 id="nav-username">Admin User</h4>
+                        <p id="nav-role">administrator</p>
+                    </div>
+                    <button class="logout-btn" id="logout-button" title="Logout">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div class="header-title">
+                    <h2 id="page-title">Dashboard Overview</h2>
+                    <p id="page-subtitle">Real-time status of your IoT ecosystem</p>
+                </div>
+                <div class="header-actions" id="tab-actions">
+                    <!-- Dynamic Action Buttons will be injected here -->
+                </div>
+            </header>
+
+            <!-- Dashboard TAB Panel -->
+            <div class="tab-panel active" id="tab-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-organizations">0</span>
+                            <span class="stat-label">Organizations</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/></svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-devices">0</span>
+                            <span class="stat-label">Devices Connected</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10"/></svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-sensors">0</span>
+                            <span class="stat-label">Active Sensors</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="border-color: rgba(239, 68, 68, 0.15)">
+                        <div class="stat-icon" style="color: var(--state-error); background-color: var(--state-error-bg)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-alerts" style="color: var(--state-error)">0</span>
+                            <span class="stat-label">Active Alerts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>Recent Sensor Readings</h3>
+                        <p>Latest measurements retrieved from IoT devices</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sensor ID</th>
+                                    <th>Sensor Type</th>
+                                    <th>Measured Value</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboard-readings-body">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color: var(--text-secondary);">Loading readings telemetry...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organizations TAB Panel -->
+            <div class="tab-panel" id="tab-organizations">
+                <div class="section-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>API Key</th>
+                                    <th>Created At</th>
+                                    <th style="text-align: right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="organizations-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Devices TAB Panel -->
+            <div class="tab-panel" id="tab-devices">
+                <div class="section-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>MAC Address</th>
+                                    <th>Firmware</th>
+                                    <th>Organization ID</th>
+                                    <th>Status</th>
+                                    <th style="text-align: right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="devices-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensors TAB Panel -->
+            <div class="tab-panel" id="tab-sensors">
+                <div class="stats-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 24px;">
+                    <div class="section-card" style="margin-bottom: 0;">
+                        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <h3>Registered Sensors</h3>
+                                <p>Manage active hardware interfaces</p>
+                            </div>
+                            <button class="btn btn-primary btn-icon" onclick="openAddSensorModal()" title="Add Sensor">+</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Device ID</th>
+                                        <th>Type</th>
+                                        <th>Unit</th>
+                                        <th style="text-align: right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sensors-table-body">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="section-card" style="margin-bottom: 0;">
+                        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <h3>Telemetry Log</h3>
+                                <p>Latest physical data reading logs</p>
+                            </div>
+                            <button class="btn btn-secondary btn-icon" onclick="openAddReadingModal()" title="Simulate Reading">+</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Sensor ID</th>
+                                        <th>Value</th>
+                                        <th>Time</th>
+                                        <th style="text-align: right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="readings-table-body">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts TAB Panel -->
+            <div class="tab-panel" id="tab-alerts">
+                <div class="section-card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Device ID</th>
+                                    <th>Severity</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th style="text-align: right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alerts-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notifications Grid -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- ORGANIZATION FORM MODAL -->
+    <div class="modal" id="org-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="org-modal-title">Create Organization</h3>
+                <button class="modal-close" onclick="closeModal('org-modal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="org-form" onsubmit="handleOrgSubmit(event)">
+                <input type="hidden" id="org-id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="org-name">Organization Name</label>
+                        <input type="text" id="org-name" class="form-control" placeholder="e.g. Acme Corporation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="org-apikey">API Key / Token</label>
+                        <input type="text" id="org-apikey" class="form-control" placeholder="e.g. org_live_secretkey" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('org-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DEVICE FORM MODAL -->
+    <div class="modal" id="device-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="device-modal-title">Add New Device</h3>
+                <button class="modal-close" onclick="closeModal('device-modal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="device-form" onsubmit="handleDeviceSubmit(event)">
+                <input type="hidden" id="device-id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="device-org">Associated Organization</label>
+                        <select id="device-org" class="form-control" required>
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="device-mac">MAC Address</label>
+                        <input type="text" id="device-mac" class="form-control" placeholder="e.g. AA:BB:CC:DD:EE:FF" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="device-firmware">Firmware Version</label>
+                        <input type="text" id="device-firmware" class="form-control" placeholder="e.g. v1.2.4" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="device-status">Status</label>
+                        <select id="device-status" class="form-control">
+                            <option value="true">Active / Online</option>
+                            <option value="false">Inactive / Offline</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('device-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SENSOR FORM MODAL -->
+    <div class="modal" id="sensor-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title">Register Sensor</h3>
+                <button class="modal-close" onclick="closeModal('sensor-modal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="sensor-form" onsubmit="handleSensorSubmit(event)">
+                <input type="hidden" id="sensor-id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="sensor-device">Associated Device</label>
+                        <select id="sensor-device" class="form-control" required>
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor-type">Sensor Type</label>
+                        <input type="text" id="sensor-type" class="form-control" placeholder="e.g. Temperature, Humidity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor-unit">Measurement Unit</label>
+                        <input type="text" id="sensor-unit" class="form-control" placeholder="e.g. °C, %, hPa" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('sensor-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Sensor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- READING FORM MODAL -->
+    <div class="modal" id="reading-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title">Simulate Sensor Reading</h3>
+                <button class="modal-close" onclick="closeModal('reading-modal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="reading-form" onsubmit="handleReadingSubmit(event)">
+                <input type="hidden" id="reading-id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="reading-sensor">Target Sensor</label>
+                        <select id="reading-sensor" class="form-control" required>
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reading-value">Reading Value</label>
+                        <input type="number" step="0.01" id="reading-value" class="form-control" placeholder="e.g. 24.50" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('reading-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Telemetry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ALERT FORM MODAL -->
+    <div class="modal" id="alert-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="alert-modal-title">Trigger Alerts</h3>
+                <button class="modal-close" onclick="closeModal('alert-modal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="alert-form" onsubmit="handleAlertSubmit(event)">
+                <input type="hidden" id="alert-id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="alert-device">Target Device</label>
+                        <select id="alert-device" class="form-control" required>
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alert-severity">Severity Level</label>
+                        <select id="alert-severity" class="form-control">
+                            <option value="Info">Info</option>
+                            <option value="Warning">Warning</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alert-message">Alert Message</label>
+                        <input type="text" id="alert-message" class="form-control" placeholder="e.g. High temperature detected" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="alert-resolved">Status</label>
+                        <select id="alert-resolved" class="form-control">
+                            <option value="false">Unresolved</option>
+                            <option value="true">Resolved</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('alert-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Trigger Alert</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Application -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
