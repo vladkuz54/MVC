@@ -17,4 +17,13 @@ class SensorsRepository(ISensorsRepository, BaseRepository):
             .where(Devices.organization_id == organization_id)
         )
         result = await self.session.execute(query)
+        return result.scalars()
+
+    async def get_by_id_and_organization(self, id, organization_id):
+        query = (
+            select(self.model)
+            .join(Devices)
+            .where(self.model.id == id, Devices.organization_id == organization_id)
+        )
+        result = await self.session.execute(query)
         return result.scalars().first()
