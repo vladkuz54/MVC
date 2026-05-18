@@ -46,6 +46,23 @@ class DevicesService(IDevicesService):
             )
         return await self.devices_repository.get_by_organization(organization_id)
 
+    async def get_by_id_and_organization(self, id, organization_id):
+        organization = await self.organizations_repository.get_by_id(organization_id)
+        if not organization:
+            raise EntityNotFoundError(
+                f"Organization with ID {organization_id} not found"
+            )
+        obj_to_get = await self.devices_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+        if not obj_to_get:
+            raise EntityNotFoundError(
+                f"Device with ID {id} for Organization ID {organization_id} not found"
+            )
+        return await self.devices_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+
     async def create(self, data: DeviceRequest):
         org = await self.organizations_repository.get_by_id(data.organization_id)
         if not org:

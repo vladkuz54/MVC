@@ -49,6 +49,23 @@ class AlertsService(IAlertsService):
             )
         return await self.alerts_repository.get_by_organization(organization_id)
 
+    async def get_by_id_and_organization(self, id, organization_id):
+        organization = await self.organizations_repository.get_by_id(organization_id)
+        if not organization:
+            raise EntityNotFoundError(
+                f"Organization with ID {organization_id} not found"
+            )
+        obj_to_get = await self.alerts_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+        if not obj_to_get:
+            raise EntityNotFoundError(
+                f"Alert with ID {id} for Organization ID {organization_id} not found"
+            )
+        return await self.alerts_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+
     async def create(self, data: AlertRequest):
         device = await self.devices_repository.get_by_id(data.device_id)
         if not device:
