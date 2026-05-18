@@ -20,6 +20,10 @@ class IReadingsService(ABC):
         pass
 
     @abstractmethod
+    async def get_by_id_and_organization(self, id, organization_id):
+        pass
+
+    @abstractmethod
     async def create(self, data):
         pass
 
