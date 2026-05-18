@@ -1,0 +1,101 @@
+organization_name,organization_api_key,organization_created_at,device_mac_address,device_status,device_firmware_version,sensor_type,sensor_unit,reading_value,reading_timestamp,alert_severity,alert_message,alert_is_resolved
+Globex Inc,jkl012,2025-09-16,02:00:00:00:00:08,False,2.4.0,humidity,%,10.03,2026-05-18 18:28:47,high,Light level too high,True
+Acme Corp,ghi789,2025-07-29,02:00:00:00:00:0b,False,1.2.0,motion,motion detected,62.84,2026-05-18 12:49:47,low,Humidity level too low,False
+Initech,abc123,2026-01-31,02:00:00:00:00:0e,False,2.0.0,pressure,hPa,58.94,2026-05-18 16:01:47,medium,Temperature threshold exceeded,False
+Globex Inc,abc123,2025-07-31,02:00:00:00:00:12,True,1.6.0,temperature,°C,43.34,2026-05-18 17:46:47,high,Motion detected in restricted area,True
+Acme Corp,def456,2025-09-04,02:00:00:00:00:05,True,2.2.0,humidity,%,67.61,2026-05-18 19:51:47,high,Temperature threshold exceeded,True
+Initech,jkl012,2026-03-19,02:00:00:00:00:14,False,2.5.0,pressure,hPa,62.69,2026-05-18 20:49:47,low,Temperature threshold exceeded,False
+Globex Inc,ghi789,2025-07-10,02:00:00:00:00:0e,True,2.8.0,light,lux,1.95,2026-05-18 10:33:47,medium,Pressure drop detected,True
+Umbrella Corp,def456,2025-11-13,02:00:00:00:00:10,True,2.8.0,motion,motion detected,85.24,2026-05-18 12:24:47,high,Pressure drop detected,True
+Hooli,abc123,2025-12-31,02:00:00:00:00:11,True,2.5.0,humidity,%,3.08,2026-05-18 20:46:47,medium,Humidity level too low,True
+Globex Inc,mno345,2026-01-23,02:00:00:00:00:04,False,1.5.0,pressure,hPa,67.03,2026-05-18 21:36:47,low,Pressure drop detected,False
+Umbrella Corp,abc123,2026-01-15,02:00:00:00:00:08,True,1.9.0,light,lux,4.41,2026-05-18 13:57:47,low,Humidity level too low,True
+Umbrella Corp,abc123,2026-04-13,02:00:00:00:00:08,True,2.7.0,motion,motion detected,17.95,2026-05-18 18:38:47,low,Humidity level too low,True
+Hooli,ghi789,2025-06-11,02:00:00:00:00:10,True,1.6.0,temperature,°C,43.51,2026-05-18 14:56:47,high,Pressure drop detected,False
+Initech,mno345,2025-09-16,02:00:00:00:00:07,True,2.4.0,light,lux,67.17,2026-05-18 13:00:47,medium,Humidity level too low,False
+Globex Inc,abc123,2026-05-07,02:00:00:00:00:0c,True,2.7.0,motion,motion detected,3.36,2026-05-18 17:09:47,low,Light level too high,False
+Hooli,def456,2025-07-30,02:00:00:00:00:02,False,2.0.0,light,lux,57.85,2026-05-18 06:39:47,high,Pressure drop detected,False
+Umbrella Corp,mno345,2026-02-20,02:00:00:00:00:13,True,2.6.0,light,lux,37.38,2026-05-18 18:58:47,medium,Light level too high,True
+Hooli,abc123,2025-06-26,02:00:00:00:00:07,True,2.4.0,light,lux,7.18,2026-05-18 15:29:47,low,Temperature threshold exceeded,False
+Umbrella Corp,abc123,2025-09-03,02:00:00:00:00:14,True,2.7.0,humidity,%,72.71,2026-05-18 19:36:47,low,Pressure drop detected,True
+Initech,mno345,2025-09-14,02:00:00:00:00:07,True,1.7.0,motion,motion detected,65.18,2026-05-18 06:55:47,high,Motion detected in restricted area,False
+Acme Corp,jkl012,2025-12-03,02:00:00:00:00:0e,True,2.6.0,light,lux,15.03,2026-05-18 13:40:47,high,Motion detected in restricted area,True
+Initech,abc123,2025-08-21,02:00:00:00:00:0d,False,2.7.0,temperature,°C,93.03,2026-05-18 16:37:47,high,Motion detected in restricted area,True
+Globex Inc,abc123,2026-02-06,02:00:00:00:00:07,True,1.2.0,humidity,%,85.72,2026-05-18 16:22:47,high,Motion detected in restricted area,True
+Globex Inc,def456,2026-05-02,02:00:00:00:00:0c,True,2.9.0,pressure,hPa,3.62,2026-05-18 12:36:47,high,Temperature threshold exceeded,True
+Globex Inc,jkl012,2025-10-22,02:00:00:00:00:14,False,2.5.0,humidity,%,32.64,2026-05-18 15:15:47,medium,Light level too high,True
+Acme Corp,abc123,2026-03-30,02:00:00:00:00:10,False,1.7.0,humidity,%,65.9,2026-05-18 21:44:47,low,Motion detected in restricted area,True
+Umbrella Corp,def456,2026-04-11,02:00:00:00:00:12,True,1.8.0,temperature,°C,34.37,2026-05-18 19:01:47,medium,Motion detected in restricted area,False
+Globex Inc,mno345,2025-09-24,02:00:00:00:00:08,True,1.7.0,temperature,°C,70.56,2026-05-18 12:59:47,high,Pressure drop detected,False
+Globex Inc,mno345,2025-08-28,02:00:00:00:00:12,True,1.5.0,pressure,hPa,20.23,2026-05-18 14:08:47,medium,Temperature threshold exceeded,True
+Acme Corp,ghi789,2025-11-09,02:00:00:00:00:10,False,1.3.0,humidity,%,81.92,2026-05-18 15:28:47,low,Light level too high,True
+Umbrella Corp,mno345,2026-02-11,02:00:00:00:00:05,False,2.5.0,motion,motion detected,83.65,2026-05-18 07:55:47,high,Motion detected in restricted area,False
+Globex Inc,def456,2025-11-11,02:00:00:00:00:06,False,1.9.0,humidity,%,13.01,2026-05-18 11:01:47,medium,Light level too high,False
+Globex Inc,def456,2025-05-26,02:00:00:00:00:04,True,1.8.0,humidity,%,27.54,2026-05-18 16:14:47,high,Motion detected in restricted area,True
+Hooli,abc123,2025-05-25,02:00:00:00:00:0e,True,1.6.0,temperature,°C,1.23,2026-05-18 20:54:47,medium,Temperature threshold exceeded,False
+Acme Corp,jkl012,2025-05-27,02:00:00:00:00:07,True,2.5.0,motion,motion detected,93.68,2026-05-18 10:43:47,medium,Light level too high,True
+Hooli,jkl012,2025-08-18,02:00:00:00:00:07,True,1.1.0,humidity,%,43.56,2026-05-18 16:03:47,low,Light level too high,True
+Globex Inc,mno345,2025-10-05,02:00:00:00:00:09,False,1.4.0,pressure,hPa,69.73,2026-05-18 19:11:47,low,Light level too high,False
+Globex Inc,abc123,2025-06-24,02:00:00:00:00:02,True,2.7.0,humidity,%,49.78,2026-05-18 15:08:47,low,Humidity level too low,False
+Umbrella Corp,mno345,2025-08-28,02:00:00:00:00:0e,False,1.7.0,motion,motion detected,80.12,2026-05-18 18:10:47,low,Temperature threshold exceeded,True
+Initech,jkl012,2026-05-11,02:00:00:00:00:0c,False,1.3.0,pressure,hPa,17.76,2026-05-18 12:44:47,high,Pressure drop detected,True
+Hooli,mno345,2026-04-21,02:00:00:00:00:06,False,2.8.0,temperature,°C,0.42,2026-05-18 08:39:47,high,Pressure drop detected,True
+Acme Corp,jkl012,2025-09-21,02:00:00:00:00:05,False,1.5.0,pressure,hPa,19.27,2026-05-18 20:40:47,low,Temperature threshold exceeded,True
+Initech,abc123,2025-12-04,02:00:00:00:00:0e,False,2.2.0,pressure,hPa,46.13,2026-05-18 09:29:47,medium,Temperature threshold exceeded,True
+Globex Inc,jkl012,2026-02-25,02:00:00:00:00:0c,True,2.0.0,humidity,%,42.5,2026-05-18 10:27:47,medium,Temperature threshold exceeded,False
+Acme Corp,def456,2025-08-01,02:00:00:00:00:13,True,1.2.0,light,lux,32.14,2026-05-18 13:53:47,high,Motion detected in restricted area,False
+Hooli,ghi789,2025-07-27,02:00:00:00:00:13,False,1.7.0,humidity,%,29.76,2026-05-18 13:28:47,high,Pressure drop detected,True
+Umbrella Corp,ghi789,2025-05-25,02:00:00:00:00:0f,False,2.1.0,humidity,%,60.11,2026-05-18 11:25:47,high,Temperature threshold exceeded,True
+Acme Corp,jkl012,2026-01-17,02:00:00:00:00:04,False,2.7.0,light,lux,54.27,2026-05-18 18:19:47,low,Light level too high,True
+Initech,abc123,2026-02-26,02:00:00:00:00:0b,True,1.0.0,motion,motion detected,81.26,2026-05-18 14:24:47,medium,Temperature threshold exceeded,True
+Acme Corp,abc123,2025-09-03,02:00:00:00:00:11,True,1.9.0,temperature,°C,51.49,2026-05-18 16:09:47,low,Light level too high,True
+Umbrella Corp,ghi789,2025-07-26,02:00:00:00:00:0a,True,1.1.0,temperature,°C,63.16,2026-05-18 21:03:47,high,Humidity level too low,False
+Globex Inc,jkl012,2026-01-17,02:00:00:00:00:01,True,2.3.0,light,lux,82.79,2026-05-18 21:48:47,medium,Light level too high,False
+Umbrella Corp,mno345,2025-09-09,02:00:00:00:00:0a,True,2.2.0,pressure,hPa,5.14,2026-05-18 14:12:47,low,Temperature threshold exceeded,True
+Umbrella Corp,mno345,2026-04-30,02:00:00:00:00:01,False,2.5.0,temperature,°C,35.04,2026-05-18 08:44:47,low,Light level too high,False
+Initech,def456,2026-04-10,02:00:00:00:00:04,True,1.3.0,motion,motion detected,50.04,2026-05-18 09:48:47,low,Pressure drop detected,False
+Umbrella Corp,def456,2026-05-06,02:00:00:00:00:08,False,2.1.0,light,lux,72.27,2026-05-18 07:19:47,high,Pressure drop detected,True
+Initech,mno345,2025-07-31,02:00:00:00:00:13,False,2.9.0,motion,motion detected,92.12,2026-05-18 13:12:47,low,Motion detected in restricted area,False
+Globex Inc,ghi789,2025-10-20,02:00:00:00:00:0f,False,2.3.0,temperature,°C,24.06,2026-05-18 21:10:47,medium,Humidity level too low,False
+Acme Corp,def456,2025-07-30,02:00:00:00:00:0c,True,2.3.0,humidity,%,79.65,2026-05-18 22:20:47,low,Motion detected in restricted area,True
+Hooli,ghi789,2025-12-24,02:00:00:00:00:0d,True,1.0.0,temperature,°C,22.0,2026-05-18 16:19:47,medium,Motion detected in restricted area,True
+Globex Inc,ghi789,2026-02-26,02:00:00:00:00:0b,False,1.2.0,light,lux,91.85,2026-05-18 14:28:47,medium,Pressure drop detected,True
+Umbrella Corp,def456,2026-04-01,02:00:00:00:00:0b,False,2.0.0,humidity,%,35.39,2026-05-18 08:56:47,medium,Humidity level too low,True
+Hooli,jkl012,2025-12-17,02:00:00:00:00:11,False,1.5.0,temperature,°C,44.28,2026-05-18 10:05:47,high,Motion detected in restricted area,True
+Hooli,ghi789,2025-11-24,02:00:00:00:00:05,True,2.0.0,pressure,hPa,54.26,2026-05-18 17:32:47,medium,Motion detected in restricted area,True
+Globex Inc,ghi789,2026-01-31,02:00:00:00:00:10,False,2.8.0,temperature,°C,4.14,2026-05-18 15:14:47,low,Light level too high,False
+Initech,jkl012,2026-01-26,02:00:00:00:00:05,True,1.6.0,temperature,°C,21.54,2026-05-18 07:19:47,medium,Motion detected in restricted area,True
+Globex Inc,abc123,2025-06-04,02:00:00:00:00:04,False,2.9.0,light,lux,65.54,2026-05-18 19:20:47,high,Motion detected in restricted area,True
+Acme Corp,abc123,2026-05-06,02:00:00:00:00:08,False,1.2.0,humidity,%,16.79,2026-05-18 16:45:47,high,Motion detected in restricted area,True
+Globex Inc,ghi789,2025-05-21,02:00:00:00:00:0e,True,1.2.0,light,lux,96.2,2026-05-18 21:44:47,low,Light level too high,False
+Acme Corp,def456,2025-05-23,02:00:00:00:00:06,False,2.6.0,temperature,°C,0.7,2026-05-18 17:59:47,low,Temperature threshold exceeded,False
+Acme Corp,abc123,2025-11-27,02:00:00:00:00:0e,False,2.0.0,light,lux,75.08,2026-05-18 09:09:47,high,Temperature threshold exceeded,True
+Hooli,ghi789,2025-09-02,02:00:00:00:00:0e,False,2.0.0,temperature,°C,87.64,2026-05-18 15:23:47,medium,Humidity level too low,False
+Umbrella Corp,abc123,2026-03-25,02:00:00:00:00:03,True,2.8.0,pressure,hPa,86.67,2026-05-18 15:33:47,low,Temperature threshold exceeded,True
+Acme Corp,def456,2025-10-21,02:00:00:00:00:02,True,2.3.0,light,lux,40.46,2026-05-18 10:28:47,low,Pressure drop detected,False
+Hooli,mno345,2026-04-04,02:00:00:00:00:0e,False,2.0.0,motion,motion detected,98.89,2026-05-18 22:11:47,high,Pressure drop detected,False
+Acme Corp,ghi789,2025-07-26,02:00:00:00:00:07,True,1.9.0,temperature,°C,89.45,2026-05-18 06:29:47,low,Humidity level too low,True
+Hooli,jkl012,2026-02-25,02:00:00:00:00:0a,True,1.2.0,temperature,°C,71.56,2026-05-18 22:27:47,medium,Pressure drop detected,True
+Hooli,jkl012,2026-03-15,02:00:00:00:00:01,False,2.6.0,temperature,°C,45.39,2026-05-18 11:35:47,medium,Humidity level too low,True
+Globex Inc,ghi789,2026-03-31,02:00:00:00:00:0d,True,1.4.0,light,lux,89.66,2026-05-18 06:27:47,high,Pressure drop detected,True
+Globex Inc,abc123,2025-07-30,02:00:00:00:00:06,False,1.6.0,pressure,hPa,82.39,2026-05-18 15:10:47,low,Humidity level too low,True
+Globex Inc,ghi789,2026-03-04,02:00:00:00:00:0b,False,2.4.0,pressure,hPa,47.07,2026-05-18 14:12:47,high,Motion detected in restricted area,True
+Globex Inc,jkl012,2026-02-02,02:00:00:00:00:05,False,2.0.0,pressure,hPa,94.94,2026-05-18 20:35:47,low,Light level too high,False
+Acme Corp,mno345,2025-08-27,02:00:00:00:00:11,True,1.6.0,humidity,%,42.0,2026-05-18 07:01:47,medium,Humidity level too low,False
+Globex Inc,ghi789,2026-02-23,02:00:00:00:00:12,False,2.1.0,motion,motion detected,50.35,2026-05-18 09:35:47,high,Light level too high,False
+Umbrella Corp,ghi789,2026-02-04,02:00:00:00:00:0e,True,2.5.0,light,lux,76.23,2026-05-18 21:55:47,high,Humidity level too low,True
+Initech,ghi789,2026-04-04,02:00:00:00:00:11,True,1.5.0,motion,motion detected,52.63,2026-05-18 22:33:47,high,Pressure drop detected,False
+Umbrella Corp,abc123,2025-09-05,02:00:00:00:00:12,False,2.3.0,light,lux,24.98,2026-05-18 06:28:47,high,Motion detected in restricted area,True
+Globex Inc,mno345,2025-11-08,02:00:00:00:00:10,True,1.0.0,pressure,hPa,68.47,2026-05-18 17:33:47,high,Pressure drop detected,False
+Umbrella Corp,jkl012,2025-08-24,02:00:00:00:00:0b,True,2.9.0,motion,motion detected,79.4,2026-05-18 20:53:47,medium,Temperature threshold exceeded,True
+Acme Corp,abc123,2025-11-12,02:00:00:00:00:03,True,1.0.0,motion,motion detected,78.38,2026-05-18 12:06:47,high,Light level too high,True
+Initech,jkl012,2025-11-29,02:00:00:00:00:12,False,2.8.0,humidity,%,39.96,2026-05-18 12:39:47,medium,Pressure drop detected,True
+Initech,ghi789,2025-06-22,02:00:00:00:00:09,False,1.4.0,pressure,hPa,12.84,2026-05-18 11:46:47,low,Temperature threshold exceeded,False
+Umbrella Corp,abc123,2026-04-19,02:00:00:00:00:05,False,2.5.0,light,lux,88.62,2026-05-18 13:24:47,low,Motion detected in restricted area,False
+Globex Inc,abc123,2025-06-16,02:00:00:00:00:01,True,1.9.0,motion,motion detected,2.11,2026-05-18 08:31:47,medium,Temperature threshold exceeded,False
+Globex Inc,jkl012,2026-03-25,02:00:00:00:00:04,False,2.8.0,motion,motion detected,4.36,2026-05-18 20:31:47,high,Humidity level too low,True
+Umbrella Corp,def456,2026-04-30,02:00:00:00:00:08,True,2.1.0,humidity,%,15.74,2026-05-18 22:29:47,medium,Humidity level too low,False
+Umbrella Corp,def456,2025-10-16,02:00:00:00:00:0a,False,1.5.0,motion,motion detected,41.52,2026-05-18 08:30:47,medium,Motion detected in restricted area,True
+Hooli,def456,2025-10-04,02:00:00:00:00:0a,False,1.6.0,humidity,%,1.37,2026-05-18 22:08:47,medium,Temperature threshold exceeded,False
+Acme Corp,abc123,2026-03-25,02:00:00:00:00:0b,True,1.7.0,pressure,hPa,21.01,2026-05-18 18:54:47,medium,Temperature threshold exceeded,True
+Umbrella Corp,def456,2026-04-27,02:00:00:00:00:12,True,2.5.0,motion,motion detected,37.23,2026-05-18 15:54:47,high,Motion detected in restricted area,True
