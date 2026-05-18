@@ -1,16 +1,22 @@
-﻿from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Request
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from bll.exceptions import EntityNotFoundError
 from presentation.routers.alerts_router import router as alerts_router
 from presentation.routers.auth import router as auth_router
 from presentation.routers.devices_router import router as devices_router
-from presentation.routers.organizations_router import router as organizations_router
+from presentation.routers.frontend_router import router as frontend_router
+from presentation.routers.organizations_router import \
+    router as organizations_router
 from presentation.routers.readings_router import router as readings_router
 from presentation.routers.sensors_router import router as sensors_router
 from presentation.routers.users_router import router as users_router
 
-app = FastAPI(title="IoT Device Management API", version="1.0")
+app = FastAPI(title="IoT Device Management API", version="1.0", docs_url=None)
+
+app.mount("/static", StaticFiles(directory="presentation/static"), name="static")
 
 
 @app.exception_handler(EntityNotFoundError)
@@ -25,3 +31,4 @@ app.include_router(alerts_router)
 app.include_router(readings_router)
 app.include_router(auth_router)
 app.include_router(users_router)
+app.include_router(frontend_router)
