@@ -26,9 +26,17 @@ class AlertResponse(BaseModel):
 
 
 @router.get("/", response_model=list[AlertResponse])
-async def get_all(service: AlertsService = Depends(get_alerts_service)):
-    alerts = await service.get_all()
-    return alerts
+async def get_all(
+    service: AlertsService = Depends(get_alerts_service),
+    current_user=Depends(get_current_user),
+):
+    if not current_user:
+        raise HTTPException(
+            status_code=401, detail="You are not authorized to perform this action"
+        )
+    if current_user.get("role") == "admin":
+        return await service.get_all()
+    return await service.get_by_organization(current_user.get("organization_id"))
 
 
 @router.get("/{id}", response_model=AlertResponse)
