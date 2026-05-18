@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
 
 from bll.services.users_service import UsersService
 
@@ -20,11 +20,13 @@ ALGORITHM = "HS256"
 bcrypth_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
 
+
 class UserRequest(BaseModel):
     username: str
     password: str
     role: str
     organization_id: int
+
 
 class TokenResponse(BaseModel):
     access_token: str
@@ -34,17 +36,10 @@ class TokenResponse(BaseModel):
 async def authicate_user(
     username: str,
     password: str,
-    role: str,
-    organization_id: int,
     service: UsersService,
 ):
     user = await service.get_user_by_username(username)
-    if (
-        not user
-        or not bcrypth_context.verify(password, user.hashed_password)
-        or user.role != role
-        or user.organization_id != organization_id
-    ):
+    if not user or not bcrypth_context.verify(password, user.hashed_password):
         return None
 
     return user
@@ -98,6 +93,7 @@ async def create_user(
     created = await service.create(user)
     return created
 
+
 @router.post("/token", response_model=TokenResponse)
 async def login(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
@@ -106,8 +102,6 @@ async def login(
     user = await authicate_user(
         form_data.username,
         form_data.password,
-        form_data.scopes[0] if form_data.scopes else "",
-        int(form_data.scopes[1]) if len(form_data.scopes) > 1 else 0,
         service,
     )
     if not user:
