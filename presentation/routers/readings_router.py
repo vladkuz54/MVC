@@ -65,7 +65,7 @@ async def create(
         raise HTTPException(
             status_code=401, detail="You are not authorized to perform this action"
         )
-    created = await service.create(reading)
+    created = await service.create(reading, current_user.get("organization_id"), current_user.get("role"))
     return created
 
 
@@ -80,7 +80,7 @@ async def update(
         raise HTTPException(
             status_code=401, detail="You are not authorized to perform this action"
         )
-    updated = await service.update(id, reading)
+    updated = await service.update(id, reading, current_user.get("organization_id"), current_user.get("role"))
     return updated
 
 
@@ -94,5 +94,5 @@ async def delete(
         raise HTTPException(
             status_code=401, detail="You are not authorized to perform this action"
         )
-    deleted = await service.delete(id)
+    deleted = await service.delete(id, current_user.get("organization_id"), current_user.get("role"))
     return deleted
