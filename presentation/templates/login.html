@@ -187,6 +187,11 @@
     <div class="toast-container" id="toast-container"></div>
 
     <script>
+        // Redirect if already authenticated
+        if (localStorage.getItem('nexus_token')) {
+            window.location.href = '/';
+        }
+
         // Simple View Form Switcher
         function switchForm(mode) {
             const loginTab = document.getElementById('btn-login-tab');
