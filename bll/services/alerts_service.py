@@ -72,12 +72,10 @@ class AlertsService(IAlertsService):
             raise EntityNotFoundError(f"Device with ID {data.device_id} not found")
 
         if role == "user":
-            organization_objects = (
-                await self.devices_repository.get_by_id_and_organization(
-                    data.device_id, organization_id
-                )
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
             )
-            if not organization_objects:
+            if not device:
                 raise EntityNotFoundError(
                     f"Device with ID {data.device_id} not found in organization {organization_id}"
                 )
@@ -96,12 +94,10 @@ class AlertsService(IAlertsService):
             raise EntityNotFoundError(f"Alert with ID {id} not found")
 
         if role == "user":
-            organization_objects = (
-                await self.devices_repository.get_by_id_and_organization(
-                    data.device_id, organization_id
-                )
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
             )
-            if not organization_objects:
+            if not device:
                 raise EntityNotFoundError(
                     f"Device with ID {data.device_id} not found in organization {organization_id}"
                 )
@@ -120,10 +116,10 @@ class AlertsService(IAlertsService):
             raise EntityNotFoundError(f"Alert with ID {id} not found")
 
         if role == "user":
-            alert_objects = await self.alerts_repository.get_by_id_and_organization(
+            alert = await self.alerts_repository.get_by_id_and_organization(
                 id, organization_id
             )
-            if not alert_objects:
+            if not alert:
                 raise EntityNotFoundError(
                     f"Alert with ID {id} not found in organization {organization_id}"
                 )
