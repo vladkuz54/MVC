@@ -14,4 +14,12 @@ class DevicesRepository(IDevicesRepository, BaseRepository):
         result = await self.session.execute(
             select(self.model).where(self.model.organization_id == organization_id)
         )
+        return result.scalars()
+
+    async def get_by_id_and_organization(self, id, organization_id):
+        result = await self.session.execute(
+            select(self.model).where(
+                self.model.id == id, self.model.organization_id == organization_id
+            )
+        )
         return result.scalars().first()

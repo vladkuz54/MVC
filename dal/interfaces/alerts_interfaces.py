@@ -10,3 +10,7 @@ class IAlertsRepository(IBaseRepository[Alerts]):
     @abstractmethod
     async def get_by_organization(self, organization_id):
         pass
+
+    @abstractmethod
+    async def get_by_id_and_organization(self, id, organization_id):
+        pass

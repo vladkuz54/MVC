@@ -49,10 +49,36 @@ class AlertsService(IAlertsService):
             )
         return await self.alerts_repository.get_by_organization(organization_id)
 
-    async def create(self, data: AlertRequest):
+    async def get_by_id_and_organization(self, id, organization_id):
+        organization = await self.organizations_repository.get_by_id(organization_id)
+        if not organization:
+            raise EntityNotFoundError(
+                f"Organization with ID {organization_id} not found"
+            )
+        obj_to_get = await self.alerts_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+        if not obj_to_get:
+            raise EntityNotFoundError(
+                f"Alert with ID {id} for Organization ID {organization_id} not found"
+            )
+        return await self.alerts_repository.get_by_id_and_organization(
+            id, organization_id
+        )
+
+    async def create(self, data: AlertRequest, organization_id: int, role: str):
         device = await self.devices_repository.get_by_id(data.device_id)
         if not device:
             raise EntityNotFoundError(f"Device with ID {data.device_id} not found")
+
+        if role == "user":
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
+            )
+            if not device:
+                raise EntityNotFoundError(
+                    f"Device with ID {data.device_id} not found in organization {organization_id}"
+                )
 
         obj_to_create = Alerts(
             device_id=data.device_id,
@@ -62,10 +88,19 @@ class AlertsService(IAlertsService):
         )
         return await self.alerts_repository.create(obj_to_create)
 
-    async def update(self, id, data: AlertRequest):
+    async def update(self, id, data: AlertRequest, organization_id: int, role: str):
         obj_to_update = await self.alerts_repository.get_by_id(id)
         if not obj_to_update:
             raise EntityNotFoundError(f"Alert with ID {id} not found")
+
+        if role == "user":
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
+            )
+            if not device:
+                raise EntityNotFoundError(
+                    f"Device with ID {data.device_id} not found in organization {organization_id}"
+                )
 
         device = await self.devices_repository.get_by_id(data.device_id)
         if not device:
@@ -75,8 +110,18 @@ class AlertsService(IAlertsService):
             setattr(obj_to_update, field, value)
         return await self.alerts_repository.update(obj_to_update)
 
-    async def delete(self, id):
+    async def delete(self, id, organization_id: int, role: str):
         obj_to_delete = await self.alerts_repository.get_by_id(id)
         if not obj_to_delete:
             raise EntityNotFoundError(f"Alert with ID {id} not found")
+
+        if role == "user":
+            alert = await self.alerts_repository.get_by_id_and_organization(
+                id, organization_id
+            )
+            if not alert:
+                raise EntityNotFoundError(
+                    f"Alert with ID {id} not found in organization {organization_id}"
+                )
+
         return await self.alerts_repository.delete(id)

@@ -14,4 +14,4 @@ class OrganizationsRepository(BaseRepository, IOrganizationsRepository):
         result = await self.session.execute(
             select(self.model).where(self.model.id == organization_id)
         )
-        return result.scalars().first()
+        return result.scalars()

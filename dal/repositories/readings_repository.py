@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 
 from .. import Session
-from ..db_models import Readings, Sensors
+from ..db_models import Devices, Readings, Sensors
 from ..interfaces.readings_interfaces import IReadingsRepository
 from .base_repository import BaseRepository
 
@@ -32,8 +32,21 @@ class ReadingsRepository(IReadingsRepository, BaseRepository):
         query = (
             select(self.model)
             .join(Sensors)
-            .join(Sensors.device_id)
-            .where(Sensors.device_id.organization_id == organization_id)
+            .join(Devices)
+            .where(Devices.organization_id == organization_id)
+        )
+        result = await self.session.execute(query)
+        return result.scalars()
+
+    async def get_by_id_and_organization(self, id, organization_id):
+        query = (
+            select(self.model)
+            .join(Sensors)
+            .join(Devices)
+            .where(
+                self.model.id == id,
+                Devices.organization_id == organization_id,
+            )
         )
         result = await self.session.execute(query)
         return result.scalars().first()

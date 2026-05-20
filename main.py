@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.openapi.docs import get_swagger_ui_html
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from bll.exceptions import EntityNotFoundError
@@ -14,7 +13,7 @@ from presentation.routers.readings_router import router as readings_router
 from presentation.routers.sensors_router import router as sensors_router
 from presentation.routers.users_router import router as users_router
 
-app = FastAPI(title="IoT Device Management API", version="1.0", docs_url=None)
+app = FastAPI(title="IoT Device Management API", version="1.0")
 
 app.mount("/static", StaticFiles(directory="presentation/static"), name="static")
 
