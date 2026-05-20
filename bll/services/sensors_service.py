@@ -64,10 +64,19 @@ class SensorsService(ISensorsService):
             )
         return await self.repository.get_by_id_and_organization(id, organization_id)
 
-    async def create(self, data: SensorRequest):
+    async def create(self, data: SensorRequest, organization_id: int, role: str):
         device = await self.devices_repository.get_by_id(data.device_id)
         if not device:
             raise EntityNotFoundError(f"Device with ID {data.device_id} not found")
+
+        if role == "user":
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
+            )
+            if not device:
+                raise EntityNotFoundError(
+                    f"Device with ID {data.device_id} not found in organization {organization_id}"
+                )
 
         obj_to_create = Sensors(
             device_id=data.device_id,
@@ -76,10 +85,19 @@ class SensorsService(ISensorsService):
         )
         return await self.repository.create(obj_to_create)
 
-    async def update(self, id, data: SensorRequest):
+    async def update(self, id, data: SensorRequest, organization_id: int, role: str):
         obj_to_update = await self.repository.get_by_id(id)
         if not obj_to_update:
             raise EntityNotFoundError(f"Sensor with ID {id} not found")
+
+        if role == "user":
+            device = await self.devices_repository.get_by_id_and_organization(
+                data.device_id, organization_id
+            )
+            if not device:
+                raise EntityNotFoundError(
+                    f"Device with ID {data.device_id} not found in organization {organization_id}"
+                )
 
         device = await self.devices_repository.get_by_id(data.device_id)
         if not device:
@@ -89,8 +107,18 @@ class SensorsService(ISensorsService):
             setattr(obj_to_update, field, value)
         return await self.repository.update(obj_to_update)
 
-    async def delete(self, id):
+    async def delete(self, id, organization_id: int, role: str):
         obj_to_delete = await self.repository.get_by_id(id)
         if not obj_to_delete:
             raise EntityNotFoundError(f"Sensor with ID {id} not found")
+
+        if role == "user":
+            sensor = await self.repository.get_by_id_and_organization(
+                id, organization_id
+            )
+            if not sensor:
+                raise EntityNotFoundError(
+                    f"Sensor with ID {id} not found in organization {organization_id}"
+                )
+
         return await self.repository.delete(id)

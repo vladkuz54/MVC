@@ -64,7 +64,9 @@ async def create(
         raise HTTPException(
             status_code=403, detail="You are not authorized to perform this action"
         )
-    created = await service.create(sensor)
+    created = await service.create(
+        sensor, current_user.get("organization_id"), current_user.get("role")
+    )
     return created
 
 
@@ -79,7 +81,9 @@ async def update(
         raise HTTPException(
             status_code=403, detail="You are not authorized to perform this action"
         )
-    updated = await service.update(id, sensor)
+    updated = await service.update(
+        id, sensor, current_user.get("organization_id"), current_user.get("role")
+    )
     return updated
 
 
@@ -93,5 +97,7 @@ async def delete(
         raise HTTPException(
             status_code=403, detail="You are not authorized to perform this action"
         )
-    deleted = await service.delete(id)
+    deleted = await service.delete(
+        id, current_user.get("organization_id"), current_user.get("role")
+    )
     return deleted
