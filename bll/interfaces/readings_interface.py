@@ -24,13 +24,13 @@ class IReadingsService(ABC):
         pass
 
     @abstractmethod
-    async def create(self, data):
+    async def create(self, data, organization_id, role):
         pass
 
     @abstractmethod
-    async def update(self, id, data):
+    async def update(self, id, data, organization_id, role):
         pass
 
     @abstractmethod
-    async def delete(self, id):
+    async def delete(self, id, organization_id, role):
         pass
